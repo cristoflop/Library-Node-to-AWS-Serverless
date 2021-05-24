@@ -31,14 +31,12 @@ const bookSchema = new mongoose.Schema({
 const Book = mongoose.model('Book', bookSchema);
 
 function toResponse(document) {
-
     if (document instanceof Array) {
-        return document.map(elem => JSON.parse('{"id": "' + elem._id.toString() + '","title": "' + elem.title.toString() + '"}'));
+        return document.map(elem => JSON.parse('{"id": "' + elem.bookid.toString() + '","title": "' + elem.title.toString() + '"}'));
     } else {
-        let response = document.toObject({ versionKey: false });
-        response.id = response._id.toString();
+        let response = {}
+        response.id = document.bookid.toString()
         response.comments = Comment.toResponse(document.comments)
-        delete response._id;
         return response;
     }
 }
