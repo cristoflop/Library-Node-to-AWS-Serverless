@@ -24,31 +24,31 @@ Resources:
             Path: /hello
             Method: get
       Policies:
-      # Policies to allow the execution of the indicated actions to the table described in Resource
-      - Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - 'dynamodb:Scan'
-              - 'dynamodb:DeleteItem'
-              - 'dynamodb:GetItem'
-              - 'dynamodb:PutItem'
-              - 'dynamodb:UpdateItem'
-            Resource:
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/users'
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/books'
+        # Policies to allow the execution of the indicated actions to the table described in Resource
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:Scan'
+                - 'dynamodb:DeleteItem'
+                - 'dynamodb:GetItem'
+                - 'dynamodb:PutItem'
+                - 'dynamodb:UpdateItem'
+              Resource:
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/users'
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/books'
 
   DeleteComment:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -63,22 +63,22 @@ Resources:
             Path: /books/{id}/comments/{commentId}
             Method: delete
       Policies:
-      # Policies to allow the execution of the indicated actions to the table described in Resource
-      - Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - 'dynamodb:Scan'
-              - 'dynamodb:DeleteItem'
-              - 'dynamodb:GetItem'
-            Resource:
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/books'
+        # Policies to allow the execution of the indicated actions to the table described in Resource
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:Scan'
+                - 'dynamodb:DeleteItem'
+                - 'dynamodb:GetItem'
+              Resource:
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/books'
 
   GetAllBooks:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -93,21 +93,21 @@ Resources:
             Path: /books
             Method: get
       Policies:
-      # Policies to allow the execution of the indicated actions to the table described in Resource
-      - Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - 'dynamodb:Scan'
-              - 'dynamodb:GetItem'
-            Resource:
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/books'
+        # Policies to allow the execution of the indicated actions to the table described in Resource
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:Scan'
+                - 'dynamodb:GetItem'
+              Resource:
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/books'
 
   GetBookById:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -122,34 +122,34 @@ Resources:
             Path: /books/{id}
             Method: get
       Policies:
-      # Policies to allow the execution of the indicated actions to the table described in Resource
-      - Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - 'dynamodb:Scan'
-              - 'dynamodb:GetItem'
-            Resource:
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/users'
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/books'
+        # Policies to allow the execution of the indicated actions to the table described in Resource
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:Scan'
+                - 'dynamodb:GetItem'
+              Resource:
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/users'
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/books'
 
   PostBook:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: src/
-      Handler: getById.lambdaHandler
+      Handler: postBook.lambdaHandler
       Runtime: nodejs14.x
       Events:
         HelloWorld:
@@ -158,22 +158,22 @@ Resources:
             Path: /books
             Method: post
       Policies:
-      # Policies to allow the execution of the indicated actions to the table described in Resource
-      - Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - 'dynamodb:Scan'
-              - 'dynamodb:GetItem'
-              - 'dynamodb:PutItem'
-            Resource:
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/books'
+        # Policies to allow the execution of the indicated actions to the table described in Resource
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:Scan'
+                - 'dynamodb:GetItem'
+                - 'dynamodb:PutItem'
+              Resource:
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/books'
 
   PostComment:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -188,23 +188,30 @@ Resources:
             Path: /{id}/comments
             Method: post
       Policies:
-      # Policies to allow the execution of the indicated actions to the table described in Resource
-      - Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - 'dynamodb:Scan'
-              - 'dynamodb:GetItem'
-              - 'dynamodb:PutItem'
-              - 'dynamodb:UpdateItem'
-            Resource:
-              - 'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/books'
+        # Policies to allow the execution of the indicated actions to the table described in Resource
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:Scan'
+                - 'dynamodb:GetItem'
+                - 'dynamodb:PutItem'
+                - 'dynamodb:UpdateItem'
+              Resource:
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/books'
+                - 'Fn::Join':
+                    - ''
+                    - - 'arn:aws:dynamodb:'
+                      - Ref: 'AWS::Region'
+                      - ':'
+                      - Ref: 'AWS::AccountId'
+                      - ':table/users'
 
 
   usersTable:

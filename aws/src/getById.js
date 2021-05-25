@@ -33,6 +33,7 @@ exports.lambdaHandler = async (event, context) => {
     )
 
     book.comments = book.comments.map(comment => ({
+        commentid: comment.commentid,
         comment: comment.comment,
         score: comment.score,
         userid: usersMap[comment.userid]

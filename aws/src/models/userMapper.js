@@ -7,7 +7,7 @@ const isValidEmail = function (email) {
 }
 
 function all(document) {
-    return document.map(elem => toResponse(elem));
+    return document.map(elem => one(elem));
 }
 
 function one(document) {
