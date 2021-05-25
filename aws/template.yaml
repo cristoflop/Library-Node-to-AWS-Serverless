@@ -185,7 +185,7 @@ Resources:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /{id}/comments
+            Path: /books/{id}/comments
             Method: post
       Policies:
         # Policies to allow the execution of the indicated actions to the table described in Resource

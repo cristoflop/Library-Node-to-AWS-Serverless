@@ -16,7 +16,11 @@ const getUserById = async (id) => {
         Key: {
             "userid": id
         },
-        TableName: table
+        FilterExpression: "userid = :id",
+        ExpressionAttributeValues: {
+            ":id": id
+        },
+        TableName: table,
     };
 
     const response = await docClient.scan(params).promise();

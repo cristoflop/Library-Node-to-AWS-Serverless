@@ -25,7 +25,11 @@ const getBookById = async (id) => {
         Key: {
             "bookid": id
         },
-        TableName: table
+        FilterExpression: "bookid = :id",
+        ExpressionAttributeValues: {
+            ":id": id
+        },
+        TableName: table,
     };
 
     const response = await docClient.scan(params).promise();
@@ -51,10 +55,14 @@ const addBook = async (data) => {
 
 const getBookComments = async (bookid) => {
     const params = {
-        TableName: table,
-        Item: {
+        Key: {
             "bookid": bookid
-        }
+        },
+        FilterExpression: "bookid = :id",
+        ExpressionAttributeValues: {
+            ":id": bookid
+        },
+        TableName: table,
     };
 
     const response = await docClient.scan(params).promise();

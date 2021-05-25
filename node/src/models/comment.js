@@ -34,4 +34,4 @@ function toResponse(document) {
     }
 }
 
-module.exports = { commentSchema, toResponse }
+module.exports = {commentSchema, toResponse}
