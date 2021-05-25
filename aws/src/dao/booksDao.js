@@ -16,7 +16,8 @@ const getAllBooks = async () => {
         TableName: table
     };
 
-    return await docClient.scan(params).promise()
+    const response = await docClient.scan(params).promise();
+    return response.Items
 };
 
 const getBookById = async (id) => {
@@ -27,7 +28,8 @@ const getBookById = async (id) => {
         TableName: table
     };
 
-    return await docClient.scan(params).promise();
+    const response = await docClient.scan(params).promise();
+    return response.Count > 0 ? response.Items[0] : null;
 };
 
 const addBook = async (data) => {

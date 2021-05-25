@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { Book, toResponse: toResponseBook } = require('../models/book.js');
-const User = require('../models/user.js').User;
+const { Book, toResponse: toResponseBook } = require('../models/bookMapper.js');
+const User = require('../models/userMapper.js').User;
 const toResponseComment = require('../models/comment.js').toResponse;
 const mongoose = require('mongoose');
 

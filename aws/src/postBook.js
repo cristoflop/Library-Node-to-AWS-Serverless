@@ -1,7 +1,7 @@
-const {addBook} = require("./booksDao");
+const {addBook} = require("./dao/booksDao");
 
 
-const { Book, toResponse: toResponseBook } = require('./models/book.js');
+const { Book, toResponse: toResponseBook } = require('./models/bookMapper.js');
 
 /**
  *

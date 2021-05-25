@@ -1,24 +1,14 @@
-const {getBookById} = require("./booksDao");
-const {getUsersById} = require("./usersDao");
+"use strict";
 
-const {toResponse: toResponseBook} = require('./models/book.js');
+const {getBookById} = require("./dao/booksDao");
+const {getUsersById} = require("./dao/usersDao");
+
+const BookMapper = require('./models/bookMapper.js');
 const uuid = require('uuid');
 
 const INVALID_BOOK_ID_RESPONSE = {"error": "Invalid book id"};
 const BOOK_NOT_FOUND_RESPONSE = {"error": "Book not found"}
 
-/**
- *
- * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
- * @param {Object} event - API Gateway Lambda Proxy Input Format
- *
- * Context doc: https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html
- * @param {Object} context
- *
- * Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
- * @returns {Object} object - API Gateway Lambda Proxy Output Format
- *
- */
 exports.lambdaHandler = async (event, context) => {
     const id = event.pathParameters.id;
 
@@ -36,6 +26,7 @@ exports.lambdaHandler = async (event, context) => {
         }
 
     const userIds = book.comments.map(comment => comment.userId)
+
     const users = await getUsersById(userIds)
     const usersMap = Object.fromEntries(
         users.map(e => [e.userid, e])
@@ -49,6 +40,6 @@ exports.lambdaHandler = async (event, context) => {
 
     return {
         'statusCode': 200,
-        'body': JSON.stringify(toResponseBook(book))
+        'body': JSON.stringify((BookMapper.toResponse(book)))
     }
 };

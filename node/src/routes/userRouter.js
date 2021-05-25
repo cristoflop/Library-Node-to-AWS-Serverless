@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { User, toResponse, isValidEmail } = require('../models/user.js');
-const Book = require('../models/book.js').Book;
+const { User, toResponse, isValidEmail } = require('../models/userMapper.js');
+const Book = require('../models/bookMapper.js').Book;
 const mongoose = require('mongoose');
 
 const INVALID_USER_ID_RESPONSE = { "error": "Invalid user id" };

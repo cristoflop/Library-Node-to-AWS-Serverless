@@ -1,6 +1,6 @@
-const {Book, toResponse: toResponseBook} = require('./models/book.js');
+const {Book, toResponse: toResponseBook} = require('./models/bookMapper.js');
 const mongoose = require('mongoose');
-const User = require('./models/user.js').User;
+const User = require('./models/userMapper.js').User;
 const toResponseComment = require('./models/comment.js').toResponse;
 
 const INVALID_BOOK_ID_RESPONSE = {"error": "Invalid book id"};

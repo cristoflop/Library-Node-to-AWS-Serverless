@@ -23,9 +23,20 @@ const getUserById = async (id) => {
 };
 
 const getUsersById = async (ids) => {
+
+    if (ids.length === 0) return [];
+
+    const values = ids.map((id, idx) => {
+        const ph = "id" + idx
+        const result = {}
+        result[ph] = id
+        return result
+    });
+
     const params = {
         TableName: table,
-        FilterExpression : `userid IN (${ids.join(",")})`,
+        FilterExpression: `userid IN (:${Object.keys(values).join(",:")})`,
+        ExpressionAttributeValues: values
     };
 
     return await docClient.scan(params).promise();
