@@ -49,6 +49,34 @@ const addBook = async (data) => {
     return await docClient.put(params).promise();
 };
 
+const getBookComments = async (bookid) => {
+    const params = {
+        TableName: table,
+        Item: {
+            "bookid": bookid
+        }
+    };
+
+    const response = await docClient.scan(params).promise();
+    return response.Count > 0 ? response.Items[0].comments : null;
+}
+
+const updateBookComments = async (data) => { // Esta funcion sirve para borrar o añadir comentarios a un libro
+    const params = {
+        TableName: table,
+        Key: {
+            "bookid": data.bookid
+        },
+        UpdateExpression: "set comments = :c",
+        ExpressionAttributeValues: {
+            ":c": data.comments
+        },
+        ReturnValues: "UPDATED_NEW" // Returns the item content after it was updated
+    };
+
+    return await docClient.update(params).promise();
+}
+
 const updateUser = (data) => {
     const params = {
         TableName: table,
@@ -90,5 +118,6 @@ module.exports = {
     getAllBooks,
     addBook,
     getBookById,
-    deleteUser
+    getBookComments,
+    updateBookComments
 };

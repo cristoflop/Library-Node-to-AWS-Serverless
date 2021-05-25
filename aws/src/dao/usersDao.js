@@ -19,8 +19,25 @@ const getUserById = async (id) => {
         TableName: table
     };
 
-    return await docClient.scan(params).promise();
+    const response = await docClient.scan(params).promise();
+    return response.Count > 0 ? response.Items[0] : null;
 };
+
+const getUserByName = async (name) => {
+    const params = {
+        FilterExpression: "#na = :n",
+        ExpressionAttributeNames: {
+            "#na": 'name'
+        },
+        ExpressionAttributeValues: {
+            ":n": name
+        },
+        TableName: table,
+    };
+
+    const response = await docClient.scan(params).promise();
+    return response.Count > 0 ? response.Items[0] : null;
+}
 
 const getUsersById = async (ids) => {
 
@@ -39,11 +56,13 @@ const getUsersById = async (ids) => {
         ExpressionAttributeValues: values
     };
 
-    return await docClient.scan(params).promise();
+    const response = await docClient.scan(params).promise();
+    return response.Items;
 };
 
 
 module.exports = {
     getUserById,
     getUsersById,
+    getUserByName,
 };
