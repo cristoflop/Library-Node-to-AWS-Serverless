@@ -64,9 +64,57 @@ const getUsersById = async (ids) => {
     return response.Items;
 };
 
+const addUser = async (data) => {
+    const params = {
+        TableName: table,
+        Item: {
+            "userid": uuid.v1(),
+            "nick": data.nick,
+            "email": data.email
+        }
+    };
+
+    return await docClient.put(params).promise();
+};
+
+
+const updateUser = (data) => {
+    const params = {
+        TableName: table,
+        Key: {
+            "userid": data.userid
+        },
+        UpdateExpression: "set email = :e",
+        ExpressionAttributeValues: {
+            ":e": data.email
+        },
+        ReturnValues: "ALL_OLD" // Returns the item content before it was updated
+    };
+
+    return docClient.update(params).promise();
+};
+
+const deleteUser = (userid) => {
+    const params = {
+        TableName: table,
+        Key: {
+            "userid": userid
+        },
+        ConditionExpression: "userid = :userid",
+        ExpressionAttributeValues: {
+            ":userid": userid
+        },
+        ReturnValues: "ALL_OLD" // Returns the item content before it was deleted
+    };
+
+    return docClient.delete(params).promise();
+};
 
 module.exports = {
     getUserById,
     getUsersById,
     getUserByName,
+    addUser,
+    updateUser,
+    deleteUser,
 };
