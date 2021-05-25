@@ -11,6 +11,15 @@ const table = 'users';
 
 // This is a DB simulation. Data should be managed with a real database inside functions.
 
+const getAllUsers = async () => {
+    const params = {
+        TableName: table
+    };
+
+    const response = await docClient.scan(params).promise();
+    return response.Items
+}
+
 const getUserById = async (id) => {
     const params = {
         Key: {
@@ -111,6 +120,7 @@ const deleteUser = (userid) => {
 };
 
 module.exports = {
+    getAllUsers,
     getUserById,
     getUsersById,
     getUserByName,
