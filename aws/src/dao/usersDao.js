@@ -57,7 +57,7 @@ const getUsersById = async (ids) => {
     if (ids.length === 0) return [];
 
     const values = ids.map((id, idx) => {
-        const ph = "id" + idx
+        const ph = idx
         const result = {}
         result[ph] = id
         return result

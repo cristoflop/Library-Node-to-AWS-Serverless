@@ -25,7 +25,7 @@ exports.lambdaHandler = async (event, context) => {
             'body': JSON.stringify(BOOK_NOT_FOUND_RESPONSE)
         }
 
-    const userIds = book.comments.map(comment => comment.userId)
+    const userIds = book.comments.map(comment => comment.userid)
 
     const users = await getUsersById(userIds)
     const usersMap = Object.fromEntries(
