@@ -36,6 +36,19 @@ Practica del master Cloud Apps de la URJC para pasar de una aplicacion Node a un
 
 ---
 
+* **Modificar el email de un usuario**:
+
+  **Method**: PATCH <br/>
+  **Route:** https://**<AWS_URL>**/users/{id} <br/>
+  **Body parameters:** <br/>
+     ```json
+     {
+         "email": "cristofer@gmail.com"
+     }
+     ```
+
+---
+
 * **Borrar un usuario**
 
   **Method**: DELETE <br/>
