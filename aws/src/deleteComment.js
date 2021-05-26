@@ -9,7 +9,7 @@ const INVALID_COMMENT_ID_RESPONSE = {"error": "Invalid comment id"};
 const BOOK_NOT_FOUND_RESPONSE = {"error": "Book not found"};
 
 exports.lambdaHandler = async (event, context) => {
-    const bookid = event.pathParameters.bookid;
+    const bookid = event.pathParameters.id;
     const commentid = event.pathParameters.commentid;
 
     if (!uuid.validate(bookid))

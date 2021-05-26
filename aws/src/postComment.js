@@ -40,7 +40,7 @@ exports.lambdaHandler = async (event, context) => {
 
     bookComments.push({
         commentid: uuid.v1(),
-        commet: comment.comment,
+        comment: comment.comment,
         score: comment.score,
         userid: user.userid,
     });
