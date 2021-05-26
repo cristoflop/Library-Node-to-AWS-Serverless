@@ -40,7 +40,7 @@ const getUserByName = async (name) => {
     const params = {
         FilterExpression: "#na = :n",
         ExpressionAttributeNames: {
-            "#na": 'name'
+            "#na": 'nick'
         },
         ExpressionAttributeValues: {
             ":n": name
